@@ -6,6 +6,35 @@
     </head>
     <body>
 
+<!-- Your project should have one HTML file that has: -->
+
+<!-- * a section of options for each sandwich part
+* the ability to select multiple, or zero, choices for each section (such as turkey and bacon, or "no meat") -->
+
+		<div id="custChoices">
+			<h1>Best Deli Ever</h1>
+
+			<section id="bread">
+				<h2>Bread Choices</h2>
+				<input type="checkbox" name="chk_bread" value="whWheat" />Whole Wheat<br />
+				<input type="checkbox" name="chk_bread" value="white" />White<br />
+				<input type="checkbox" name="chk_bread" value="panini" />Panini<br />
+				<input type="checkbox" name="chk_bread" value="wrap" />Wrap<br />
+			</section>
+
+			<section id="meat"></section>
+			<section id="cheese"></section>
+			<section id="veggies"></section>
+			<section id="condiments"></section>
+
+			<div>
+				<button type="submit" id="buildSandwich"  value="Build">Sandwich Order Done</button>
+			</div>
+		</div>
+
+<!-- * an empty DOM element into which the final sandwich order and its cost will be inserted -->
+		<div id="orderOutput"></div>
+
     	<script type="text/javascript" src="javascripts/sandwichMaker.js"></script>
     </body>
 </html>
