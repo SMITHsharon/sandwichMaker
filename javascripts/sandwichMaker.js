@@ -1,3 +1,5 @@
+// THIS IS ALL BOILERPLATE
+
 var SandwichMaker = (function() {
 
   // Private variable to store the price
