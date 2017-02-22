@@ -1,9 +1,11 @@
 
 // This SandwichMaker IIFE augments the original one
+// Boilerplate for this file provided along with assignment specs
+
 var SandwichMaker = (function(maker) {
 
   // Private variable to store the different meat prices
-  	var meatPrices = {
+  var meatPrices = {
   		"turkey": 0.90,
   		"chicken": 1.50, 
   		"ham": 2.00,
@@ -11,17 +13,20 @@ var SandwichMaker = (function(maker) {
   		"salami": 3.00,
   		"tuna": 3.50,
   		"none": 0.00
-  	};
+  };
 
   // Augment the original object with another method
+  // add the selected meat choice to the sandwich
 	maker.addMeat = function(meatChoice) {
-    return ???;
+    meatPrices.push(meatChoice);
   };
 
-  maker.getTurkeyPrice = function(meatChoice) {
-  	return 0.90;
-  };
+  // RETURNS 
+  maker.getMeat = function() {
+    return meatPrices;
+  }
 
-  // Return the new, augmented object with the new method on it
+  // RETURNS the new, augmented object with the new method on it
   return maker;
+
 })(SandwichMaker || {});

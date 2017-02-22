@@ -1,4 +1,4 @@
-// THIS IS ALL BOILERPLATE
+// this function provided as given with assignment specs
 
 var SandwichMaker = (function() {
 

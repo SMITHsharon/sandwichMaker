@@ -6,31 +6,26 @@
     </head>
     <body>
 
-<!-- Your project should have one HTML file that has: -->
-
-<!-- * a section of options for each sandwich part
-* the ability to select multiple, or zero, choices for each section (such as turkey and bacon, or "no meat") -->
-
 		<div id="custChoices">
 			<h1>Best Deli Ever</h1>
 
 			<section id="bread">
-				<h2>Bread Choices</h2>
-				<input type="radio" name="bread" value="whWheat" />Whole Wheat<br />
-				<input type="radio" name="bread" value="white" />White<br />
-				<input type="radio" name="bread" value="panini" />Panini<br />
-				<input type="radio" name="bread" value="wrap" />Wrap<br />
+				<h3>Bread Choices</h3>
+				<input type="radio" name="bread" value="whWheat" />Whole Wheat
+				<input type="radio" name="bread" value="white" />White
+				<input type="radio" name="bread" value="panini" />Panini
+				<input type="radio" name="bread" value="wrap" />Wrap
 			</section>
 
-			<section id="meat-chooser"></section>
-				<h2>Meat Choices</h2>
-				<input type="checkbox" name="chk_meat" value="turkey" />Turkey<br />
-				<input type="checkbox" name="chk_meat" value="chicken" />Chicken<br />
-				<input type="checkbox" name="chk_meat" value="ham" />Ham<br />
-				<input type="checkbox" name="chk_meat" value="rBeef" />Roast Beef<br />
-				<input type="checkbox" name="chk_meat" value="salami" />Salami<br />
-				<input type="checkbox" name="chk_meat" value="tuna" />Tuna<br />
-				<input type="checkbox" name="chk_meat" value="none" />No Meat<br />
+			<section id="meatChoices">
+				<h3>Meat Choices</h3>
+				<input type="checkbox" name="chk_meat" value="turkey" />Turkey
+				<input type="checkbox" name="chk_meat" value="chicken" />Chicken
+				<input type="checkbox" name="chk_meat" value="ham" />Ham
+				<input type="checkbox" name="chk_meat" value="rBeef" />Roast Beef
+				<input type="checkbox" name="chk_meat" value="salami" />Salami
+				<input type="checkbox" name="chk_meat" value="tuna" />Tuna
+				<input type="checkbox" name="chk_meat" value="none" />No Meat
 			</section>
 
 			<section id="cheese"></section>
@@ -42,9 +37,11 @@
 			</div>
 		</div>
 
-<!-- * an empty DOM element into which the final sandwich order and its cost will be inserted -->
+		<!-- * empty DOM element into which the final sandwich order and its cost will be inserted -->
 		<div id="orderOutput"></div>
 
+    	<script type="text/javascript" src="javascripts/DOMHandler.js"></script>
     	<script type="text/javascript" src="javascripts/sandwichMaker.js"></script>
+    	<script type="text/javascript" src="javascripts/meat.js"></script>
     </body>
 </html>
