@@ -2,6 +2,7 @@
 
 // Variable accumulates the final price. Initialize to 0.
 var finalSandwichPrice = 0;
+var sandwichArray = [];
 
 // Variable holds the topping that the user selects
 var selectedTopping;
@@ -19,37 +20,53 @@ var meatChooser = document.getElementById("meatChoices");
 // Function gets the price for the selected topping
 // PARAMETERS: array of Topping Objects; user-selected topping
 // <for each> loop used for Objects
+//            Loops over the Object Array Keys <i>, returns associated value
 // RETURNS: price for the selected topping
 //********************************************************
-function getPrice(objArray, thisTopping) {
-console.log("in getPrice / objArray :: ", objArray);
-console.log("in getPrice / thisTopping :: ", thisTopping); 
+// function getPrice(objArray, thisTopping) {
+// console.log("in getPrice / objArray :: ", objArray);
+// console.log("in getPrice / thisTopping :: ", thisTopping); 
 
+// 	for (var i in objArray) {
+// 		console.log("i :: ", i);
+// 		if (i === thisTopping) {
+// 			console.log("returning objArray[i] :: ", objArray[i]);
+// 			return objArray[i];
+// 		}
+// 	}
+// }
 
-	for (var i in objArray) {
-		console.log("i :: ", i);
-		if (i === thisTopping) {
-			console.log("returning objArray[i] :: ", objArray[i]);
-			return objArray[i];
-		}
-		
-	}
-}
 
 
 //********************************************************
-// Event Listener for Meat Chooser
+// Event Listener for meatChooser
 //********************************************************
 meatChooser.addEventListener("change", function(event) {
 
   // Get the value chosen from the DOM
   selectedTopping = event.target.value;
-  console.log("selectedTopping :: ", selectedTopping);
+  sandwichArray.push(selectedTopping);
+  console.log("in meatChooser EventListener / sandwichArray :: ", sandwichArray); 
 
-  // Determine the price of the topping chosen
-  finalSandwichPrice += getPrice(SandwichMaker.getMeat(), selectedTopping);
+  // Determine the price of the selected topping; adds to the accumulating price
+  // finalSandwichPrice += sandwichMaker.addTopping(selectedTopping);
+  // finalSandwichPrice =+ sandwichMaker.addMeat(selectedTopping);
+  SandwichMaker.addTopping(selectedTopping);
   console.log("finalSandwichPrice :: ", finalSandwichPrice);
 
+  // Output the price to the DOM
+  // document.getElementById("orderOutput").value = "$" + finalSandwichPrice.toFixed(2);
+  document.getElementById("orderOutput").innerHTML = "$" + finalSandwichPrice.toFixed(2);
+
   // Add the topping to the SandwichMaker to increase the total price
-  document.getElementById("orderOutput").value = "$" + finalSandwichPrice.toFixed(2);
 });
+
+
+
+
+
+
+
+
+
+

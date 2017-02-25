@@ -19,14 +19,17 @@ var SandwichMaker = (function(maker) {
   // add the selected meat choice to the sandwich
 	maker.addMeat = function(meatChoice) {
     meatPrices.push(meatChoice);
+    console.log("returning meatPrices from addMeat function :: ", meatPrices);
   };
 
   // RETURNS 
   maker.getMeat = function() {
+    console.log("returning meatPrices from getMeat function :: ", meatPrices);
     return meatPrices;
   }
 
-  // RETURNS the new, augmented object with the new method on it
+  // RETURNS the new, augmented object with the new method on it to SandwichMaker
+  console.log("returning from meat.js", maker);
   return maker;
 
 })(SandwichMaker || {});

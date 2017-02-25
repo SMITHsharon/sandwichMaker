@@ -1,47 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-    <meta charset="UTF-8">
-    <title>(25) Sandwich Maker</title>
+	    <meta charset="UTF-8">
+	    <title>(25) Sandwich Maker</title>
+	    <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
     <body>
 
 		<div id="custChoices">
 			<h1>Best Deli Ever</h1>
 
-			<section id="bread">
-				<h3>Bread Choices</h3>
-				<input type="radio" name="bread" value="whWheat" />Whole Wheat
-				<input type="radio" name="bread" value="white" />White
-				<input type="radio" name="bread" value="panini" />Panini
-				<input type="radio" name="bread" value="wrap" />Wrap
-			</section>
+			<fieldset class="menuBoxes">
+				<section id="bread">
+					<h3>Bread Choices</h3>
+					<ul>
+						<li><input type="radio" name="bread" value="whWheat" />Whole Wheat</li>
+						<li><input type="radio" name="bread" value="white" />White</li>
+						<li><input type="radio" name="bread" value="panini" />Panini</li>
+						<li><input type="radio" name="bread" value="wrap" />Wrap</li>
+					</ul>
+				</section>
+			</fieldset>
 
-			<section id="meatChoices">
-				<h3>Meat Choices</h3>
-				<input type="checkbox" name="chk_meat" value="turkey" />Turkey
-				<input type="checkbox" name="chk_meat" value="chicken" />Chicken
-				<input type="checkbox" name="chk_meat" value="ham" />Ham
-				<input type="checkbox" name="chk_meat" value="rBeef" />Roast Beef
-				<input type="checkbox" name="chk_meat" value="salami" />Salami
-				<input type="checkbox" name="chk_meat" value="tuna" />Tuna
-				<input type="checkbox" name="chk_meat" value="none" />No Meat
-			</section>
+			<fieldset class="menuBoxes">
+				<section id="meatChoices">
+					<h3>Meat Choices</h3>
+					<ul>
+						<li><input type="checkbox" name="chk_meat" value="turkey" />Turkey</li>
+						<li><input type="checkbox" name="chk_meat" value="chicken" />Chicken</li>
+						<li><input type="checkbox" name="chk_meat" value="ham" />Ham</li>
+						<li><input type="checkbox" name="chk_meat" value="rBeef" />Roast Beef</li>
+						<li><input type="checkbox" name="chk_meat" value="salami" />Salami</li>
+						<li><input type="checkbox" name="chk_meat" value="tuna" />Tuna</li>
+						<li><input type="checkbox" name="chk_meat" value="none" />No Meat</li>
+					</ul>
+				</section>
+			</fieldset>
 
 			<section id="cheese"></section>
 			<section id="veggies"></section>
 			<section id="condiments"></section>
 
-			<div>
+			<fieldset class="menuBoxes">
 				<button type="submit" id="buildSandwich"  value="Build">Sandwich Order Done</button>
-			</div>
-		</div>
+			</fieldset>
 
 		<!-- * empty DOM element into which the final sandwich order and its cost will be inserted -->
-		<div id="orderOutput"></div>
+		<!-- <fieldset class="menuBoxes"> -->
+			<div id="orderOutput"></div>
+		<!-- </fieldset> -->
 
-    	<script type="text/javascript" src="javascripts/DOMHandler.js"></script>
     	<script type="text/javascript" src="javascripts/sandwichMaker.js"></script>
+    	<script type="text/javascript" src="javascripts/DOMHandler.js"></script>
     	<script type="text/javascript" src="javascripts/meat.js"></script>
     </body>
 </html>
