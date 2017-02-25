@@ -2,8 +2,8 @@
 
 // Variable accumulates the final price. Initialize to 0.
 var finalSandwichPrice = 0;
-// var sandwichArray = [];
-var finalSandwichOrder = [];
+
+var finalSandwichOrder;
 var workingSandwichOrder = {
   "bread": "",
   "meat": [],
@@ -19,8 +19,8 @@ var selectedTopping;
 var breadChooser = document.getElementById("breadChoices");
 var meatChooser = document.getElementById("meatChoices");
 var cheeseChooser = document.getElementById("cheeseChoices");
-// var veggiesChooser
-// var condimentsChooser
+var veggiesChooser = document.getElementById("veggieChoices");
+var condimentsChooser = document.getElementById("condimentsChoices");
 
 
 
@@ -107,7 +107,6 @@ meatChooser.addEventListener("change", function(event) {
 });
 
 
-
 //********************************************************
 // Event Listener for cheeseChooser
 //********************************************************
@@ -122,7 +121,7 @@ cheeseChooser.addEventListener("change", function(event) {
     // add the topping price to <finalSandwichPrice>
     SandwichMaker.addCheeseChoice(selectedTopping);
     finalSandwichPrice += SandwichMaker.getCheesePrice(selectedTopping);
-    
+
   } else {
     // remove the selected item from <workingSandwichOrder["cheese"]> array
     // subtract the topping price from <finalSandwichPrice>
@@ -136,6 +135,33 @@ cheeseChooser.addEventListener("change", function(event) {
 });
 
 
+
+//********************************************************
+// Event Listener for veggiesChooser
+//********************************************************
+veggiesChooser.addEventListener("change", function(event) {
+
+  // Get the selected veggies topping from the DOM
+  selectedTopping = event.target.value;
+
+  if (event.target.checked) {
+
+    // add the selectedTopping to <workingSandwichOrder["veggies"]> array
+    // add the topping price to <finalSandwichPrice>
+    SandwichMaker.addVeggiesChoice(selectedTopping);
+    finalSandwichPrice += SandwichMaker.getVeggiesPrice(selectedTopping);
+
+  } else {
+    // remove the selected item from <workingSandwichOrder["cheese"]> array
+    // subtract the topping price from <finalSandwichPrice>
+    SandwichMaker.removeVeggiesChoice(selectedTopping);
+    finalSandwichPrice -= SandwichMaker.getVeggiesPrice(selectedTopping);
+  }
+
+  // Output the price-in-process to the DOM
+  document.getElementById("orderOutput").innerHTML = "Calculating Price: $" + finalSandwichPrice.toFixed(2);
+  console.log("workingSandwichOrder :: ", workingSandwichOrder); 
+});
 
 
 
