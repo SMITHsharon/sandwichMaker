@@ -135,7 +135,6 @@ cheeseChooser.addEventListener("change", function(event) {
 });
 
 
-
 //********************************************************
 // Event Listener for veggiesChooser
 //********************************************************
@@ -152,7 +151,7 @@ veggiesChooser.addEventListener("change", function(event) {
     finalSandwichPrice += SandwichMaker.getVeggiesPrice(selectedTopping);
 
   } else {
-    // remove the selected item from <workingSandwichOrder["cheese"]> array
+    // remove the selected item from <workingSandwichOrder["veggies"]> array
     // subtract the topping price from <finalSandwichPrice>
     SandwichMaker.removeVeggiesChoice(selectedTopping);
     finalSandwichPrice -= SandwichMaker.getVeggiesPrice(selectedTopping);
@@ -163,6 +162,34 @@ veggiesChooser.addEventListener("change", function(event) {
   console.log("workingSandwichOrder :: ", workingSandwichOrder); 
 });
 
+
+
+//********************************************************
+// Event Listener for condimentsChooser
+//********************************************************
+condimentsChooser.addEventListener("change", function(event) {
+
+  // Get the selected veggies topping from the DOM
+  selectedTopping = event.target.value;
+
+  if (event.target.checked) {
+
+    // add the selectedTopping to <workingSandwichOrder["condiments"]> array
+    // add the topping price to <finalSandwichPrice>
+    SandwichMaker.addCondimentsChoice(selectedTopping);
+    finalSandwichPrice += SandwichMaker.getCondimentsPrice(selectedTopping);
+
+  } else {
+    // remove the selected item from <workingSandwichOrder["condiments"]> array
+    // subtract the topping price from <finalSandwichPrice>
+    SandwichMaker.removeCondimentsChoice(selectedTopping);
+    finalSandwichPrice -= SandwichMaker.getCondimentsPrice(selectedTopping);
+  }
+
+  // Output the price-in-process to the DOM
+  document.getElementById("orderOutput").innerHTML = "Calculating Price: $" + finalSandwichPrice.toFixed(2);
+  console.log("workingSandwichOrder :: ", workingSandwichOrder); 
+});
 
 
 

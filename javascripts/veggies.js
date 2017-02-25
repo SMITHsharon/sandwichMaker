@@ -20,7 +20,7 @@ var SandwichMaker = (function(maker) {
     return workingSandwichOrder;
   };
 
-  // Removes the selected cheese choice from the <workingSandwichOrder["veggies"] array
+  // Removes the selected veggie choice from the <workingSandwichOrder["veggies"] array
   // RETURNS modified <workingSandwichOrder> array
   maker.removeVeggiesChoice = function(thisTopping) {
     workingSandwichOrder["veggies"].splice(workingSandwichOrder["veggies"].indexOf(thisTopping), 1);
