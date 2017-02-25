@@ -16,9 +16,9 @@ var workingSandwichOrder = {
 var selectedTopping;
 
 // Get a reference to the <select> element that has all the meat options
-// var breatChooser
+var breadChooser = document.getElementById("breadChoices");
 var meatChooser = document.getElementById("meatChoices");
-// var cheeseChooser
+var cheeseChooser
 // var veggiesChooser
 // var condimentsChooser
 
@@ -44,6 +44,35 @@ var meatChooser = document.getElementById("meatChoices");
 // 	}
 // }
 
+
+
+
+//********************************************************
+// Event Listener for breadChooser
+//********************************************************
+breadChooser.addEventListener("change", function(event) {
+
+  // Get the selected topping from the DOM
+  selectedTopping = event.target.value;
+
+  if (event.target.checked) {
+
+    if (workingSandwichOrder.bread !== "") {
+      // bread choice is being changed
+      // subtract the bread being removed from <finalSandwichPrice>
+      finalSandwichPrice -= SandwichMaker.getBreadPrice(workingSandwichOrder.bread);
+    }
+    // add the selectedTopping to <workingSandwichOrder> array
+    // add the topping price to <finalSandwichPrice>
+    SandwichMaker.addBreadChoice(selectedTopping);
+    finalSandwichPrice += SandwichMaker.getBreadPrice(selectedTopping);
+
+  } 
+
+  // Output the price-in-process to the DOM
+  document.getElementById("orderOutput").innerHTML = "Calculating Price: $" + finalSandwichPrice.toFixed(2);
+  console.log("workingSandwichOrder :: ", workingSandwichOrder); 
+});
 
 
 //********************************************************
@@ -97,6 +126,7 @@ meatChooser.addEventListener("change", function(event) {
 
   // Output the price-in-process to the DOM
   document.getElementById("orderOutput").innerHTML = "Calculating Price: $" + finalSandwichPrice.toFixed(2);
+  console.log("workingSandwichOrder :: ", workingSandwichOrder); 
 });
 
 
