@@ -2,7 +2,9 @@
 
 // Variable accumulates the final price. Initialize to 0.
 var finalSandwichPrice = 0;
-var sandwichArray = [];
+// var sandwichArray = [];
+var finalSandwichOrder = [];
+var workingSandwichOrder = [];
 
 // Variable holds the topping that the user selects
 var selectedTopping;
@@ -45,13 +47,15 @@ meatChooser.addEventListener("change", function(event) {
 
   // Get the value chosen from the DOM
   selectedTopping = event.target.value;
-  sandwichArray.push(selectedTopping);
-  console.log("in meatChooser EventListener / sandwichArray :: ", sandwichArray); 
+// if checked
+  // sandwichArray.push(selectedTopping);
+  // workingSandwichOrder = SandwichMaker.addMeatChoice(selectedTopping);
+  SandwichMaker.addMeatChoice(selectedTopping);
+  // console.log("in meatChooser EventListener / sandwichArray :: ", sandwichArray); 
+  console.log("return from addMeatChoice augmentor function :: ", workingSandwichOrder); 
+// else state is unchecked => remove selected item from sandwichArray; subtract price from <finalSandwichPrice>
 
-  // Determine the price of the selected topping; adds to the accumulating price
-  // finalSandwichPrice += sandwichMaker.addTopping(selectedTopping);
-  // finalSandwichPrice =+ sandwichMaker.addMeat(selectedTopping);
-  SandwichMaker.addTopping(selectedTopping);
+  finalSandwichPrice += SandwichMaker.getMeatPrice(selectedTopping);
   console.log("finalSandwichPrice :: ", finalSandwichPrice);
 
   // Output the price to the DOM

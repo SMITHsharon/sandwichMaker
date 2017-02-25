@@ -1,6 +1,6 @@
 
-// This SandwichMaker IIFE augments the original one
-// Boilerplate for this file provided along with assignment specs
+// <meat.js> augments <sandwichMaker.js>
+// Boilerplate for this file was provided along with assignment specs
 
 var SandwichMaker = (function(maker) {
 
@@ -15,21 +15,30 @@ var SandwichMaker = (function(maker) {
   		"none": 0.00
   };
 
-  // Augment the original object with another method
-  // add the selected meat choice to the sandwich
-	maker.addMeat = function(meatChoice) {
-    meatPrices.push(meatChoice);
-    console.log("returning meatPrices from addMeat function :: ", meatPrices);
+  // Adds the selected meat choice to the rray
+  // RETURNS modified <workingSandwichOrder> aarray
+	maker.addMeatChoice = function(thisTopping) {
+    workingSandwichOrder.push(selectedTopping);
+// console.log("returning workingSandwichOrder from addMeatChoice augmentor function :: ", workingSandwichOrder);
+    return workingSandwichOrder;
   };
 
-  // RETURNS 
-  maker.getMeat = function() {
-    console.log("returning meatPrices from getMeat function :: ", meatPrices);
-    return meatPrices;
+  // RETURNS the price for the selected meat choice
+  maker.getMeatPrice = function(thisTopping) {
+// console.log("returning meatPrices from getMeatPrice augmentor function :: ", meatPrices);
+    for (var i in meatPrices) {
+// console.log("i :: ", i);
+      if (i === thisTopping) {
+// console.log("returning meatPrices[i] :: ", meatPrices[i]);
+      return meatPrices[i];
+      }
+    }
   }
+    // return meatPrices;
+  // }
 
   // RETURNS the new, augmented object with the new method on it to SandwichMaker
-  console.log("returning from meat.js", maker);
+// console.log("returning from meat.js", maker);
   return maker;
 
 })(SandwichMaker || {});

@@ -1,4 +1,5 @@
 // this function provided as given with assignment specs
+// var workingSandwichOrder [];
 
 var SandwichMaker = (function() {
 
