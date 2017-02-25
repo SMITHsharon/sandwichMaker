@@ -4,7 +4,13 @@
 var finalSandwichPrice = 0;
 // var sandwichArray = [];
 var finalSandwichOrder = [];
-var workingSandwichOrder = [];
+var workingSandwichOrder = {
+  "bread": "",
+  "meat": [],
+  "cheese": [],
+  "condiments": [],
+  "veggies": []
+};
 
 // Variable holds the topping that the user selects
 var selectedTopping;
@@ -45,24 +51,52 @@ var meatChooser = document.getElementById("meatChoices");
 //********************************************************
 meatChooser.addEventListener("change", function(event) {
 
-  // Get the value chosen from the DOM
+  // Get the selected topping from the DOM
   selectedTopping = event.target.value;
-// if checked
-  // sandwichArray.push(selectedTopping);
-  // workingSandwichOrder = SandwichMaker.addMeatChoice(selectedTopping);
-  SandwichMaker.addMeatChoice(selectedTopping);
-  // console.log("in meatChooser EventListener / sandwichArray :: ", sandwichArray); 
-  console.log("return from addMeatChoice augmentor function :: ", workingSandwichOrder); 
-// else state is unchecked => remove selected item from sandwichArray; subtract price from <finalSandwichPrice>
 
-  finalSandwichPrice += SandwichMaker.getMeatPrice(selectedTopping);
-  console.log("finalSandwichPrice :: ", finalSandwichPrice);
+  if (event.target.checked) {
 
-  // Output the price to the DOM
-  // document.getElementById("orderOutput").value = "$" + finalSandwichPrice.toFixed(2);
-  document.getElementById("orderOutput").innerHTML = "$" + finalSandwichPrice.toFixed(2);
+    if (selectedTopping !== "none") {    
+      // add the selectedTopping to <workingSandwichOrder> array
+      // add the topping price to <finalSandwichPrice>
+      SandwichMaker.addMeatChoice(selectedTopping);
+      finalSandwichPrice += SandwichMaker.getMeatPrice(selectedTopping);
 
-  // Add the topping to the SandwichMaker to increase the total price
+    } else {
+      // selectedTopping is <No Meat>
+      // remove any meat toppings that have been added to <workingSandwichOrder> array
+      // subtract any meat topping prices that have been added to <finalSandwichPrice>
+      var loopLength = workingSandwichOrder["meat"].length;
+      for (var i=0; i<loopLength; i++) {
+        finalSandwichPrice -= SandwichMaker.getMeatPrice(workingSandwichOrder["meat"][0]);  // item to be removed 
+        SandwichMaker.removeMeatChoice(workingSandwichOrder["meat"][0]);                    // will always be first item in array
+
+        // clear the DOM check boxes to show only <No Meat> selected
+        var meatChoicesDisplay = document.getElementById("meatChoices");
+  console.log("meatChoicesDisplay :: ", meatChoicesDisplay);
+        var checkBoxesDisplay = "<h3>Meat Choices</h3>";
+        checkBoxesDisplay += "<ul>";
+        checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="turkey" />Turkey</li>';
+        checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="chicken" />Chicken</li>';
+        checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="ham" />Ham</li>';
+        checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="roast beef" />Roast Beef</li>';
+        checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="salami" />Salami</li>';
+        checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="tuna" />Tuna</li>';
+        checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="none" checked="checked" />No Meat</li>';
+        checkBoxesDisplay += '</ul>';
+        meatChoicesDisplay.innerHTML = checkBoxesDisplay;
+      }
+    }
+
+  } else {
+    // remove the selected item from <workingSandwichOrder> array
+    // subtract the topping price from <finalSandwichPrice>
+    SandwichMaker.removeMeatChoice(selectedTopping);
+    finalSandwichPrice -= SandwichMaker.getMeatPrice(selectedTopping);
+  }
+
+  // Output the price-in-process to the DOM
+  document.getElementById("orderOutput").innerHTML = "Calculating Price: $" + finalSandwichPrice.toFixed(2);
 });
 
 
