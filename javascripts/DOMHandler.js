@@ -8,8 +8,8 @@ var workingSandwichOrder = {
   "bread": "",
   "meat": [],
   "cheese": [],
-  "condiments": [],
-  "veggies": []
+  "veggies": [],
+  "condiments": []
 };
 
 // Variable holds the topping that the user selects
@@ -18,32 +18,9 @@ var selectedTopping;
 // Get a reference to the <select> element that has all the meat options
 var breadChooser = document.getElementById("breadChoices");
 var meatChooser = document.getElementById("meatChoices");
-var cheeseChooser
+var cheeseChooser = document.getElementById("cheeseChoices");
 // var veggiesChooser
 // var condimentsChooser
-
-
-
-//********************************************************
-// Function gets the price for the selected topping
-// PARAMETERS: array of Topping Objects; user-selected topping
-// <for each> loop used for Objects
-//            Loops over the Object Array Keys <i>, returns associated value
-// RETURNS: price for the selected topping
-//********************************************************
-// function getPrice(objArray, thisTopping) {
-// console.log("in getPrice / objArray :: ", objArray);
-// console.log("in getPrice / thisTopping :: ", thisTopping); 
-
-// 	for (var i in objArray) {
-// 		console.log("i :: ", i);
-// 		if (i === thisTopping) {
-// 			console.log("returning objArray[i] :: ", objArray[i]);
-// 			return objArray[i];
-// 		}
-// 	}
-// }
-
 
 
 
@@ -52,7 +29,7 @@ var cheeseChooser
 //********************************************************
 breadChooser.addEventListener("change", function(event) {
 
-  // Get the selected topping from the DOM
+  // Get the selected bread topping from the DOM
   selectedTopping = event.target.value;
 
   if (event.target.checked) {
@@ -80,13 +57,13 @@ breadChooser.addEventListener("change", function(event) {
 //********************************************************
 meatChooser.addEventListener("change", function(event) {
 
-  // Get the selected topping from the DOM
+  // Get the selected meat topping from the DOM
   selectedTopping = event.target.value;
 
   if (event.target.checked) {
 
     if (selectedTopping !== "none") {    
-      // add the selectedTopping to <workingSandwichOrder> array
+      // add the selectedTopping to <workingSandwichOrder["meat"]> array
       // add the topping price to <finalSandwichPrice>
       SandwichMaker.addMeatChoice(selectedTopping);
       finalSandwichPrice += SandwichMaker.getMeatPrice(selectedTopping);
@@ -118,10 +95,39 @@ meatChooser.addEventListener("change", function(event) {
     }
 
   } else {
-    // remove the selected item from <workingSandwichOrder> array
+    // remove the selected item from <workingSandwichOrder["meat"]> array
     // subtract the topping price from <finalSandwichPrice>
     SandwichMaker.removeMeatChoice(selectedTopping);
     finalSandwichPrice -= SandwichMaker.getMeatPrice(selectedTopping);
+  }
+
+  // Output the price-in-process to the DOM
+  document.getElementById("orderOutput").innerHTML = "Calculating Price: $" + finalSandwichPrice.toFixed(2);
+  console.log("workingSandwichOrder :: ", workingSandwichOrder); 
+});
+
+
+
+//********************************************************
+// Event Listener for cheeseChooser
+//********************************************************
+cheeseChooser.addEventListener("change", function(event) {
+
+  // Get the selected cheese topping from the DOM
+  selectedTopping = event.target.value;
+
+  if (event.target.checked) {
+
+    // add the selectedTopping to <workingSandwichOrder["cheese"]> array
+    // add the topping price to <finalSandwichPrice>
+    SandwichMaker.addCheeseChoice(selectedTopping);
+    finalSandwichPrice += SandwichMaker.getCheesePrice(selectedTopping);
+    
+  } else {
+    // remove the selected item from <workingSandwichOrder["cheese"]> array
+    // subtract the topping price from <finalSandwichPrice>
+    SandwichMaker.removeCheeseChoice(selectedTopping);
+    finalSandwichPrice -= SandwichMaker.getCheesePrice(selectedTopping);
   }
 
   // Output the price-in-process to the DOM

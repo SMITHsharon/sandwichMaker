@@ -38,9 +38,29 @@
 				</section>
 			</fieldset>
 
-			<section id="cheese"></section>
-			<section id="veggies"></section>
-			<section id="condiments"></section>
+			<fieldset class="menuBoxes">
+				<section id="cheeseChoices">
+					<h3>Cheese Choices</h3>
+					<ul>
+						<li><input type="checkbox" name="chk_cheese" value="cheddar" />Cheddar</li>
+						<li><input type="checkbox" name="chk_cheese" value="swiss" />Swiss</li>
+						<li><input type="checkbox" name="chk_cheese" value="american" />American</li>
+					</ul>
+					
+				</section>
+			</fieldset>
+
+			<fieldset class="menuBoxes">
+				<section id="veggies">
+					
+				</section>
+			</fieldset>
+
+			<fieldset class="menuBoxes">
+				<section id="condiments">
+					
+				</section>
+			</fieldset>
 
 			<fieldset class="menuBoxes">
 				<button type="submit" id="buildSandwich"  value="Build">Sandwich Order Done</button>
@@ -51,9 +71,15 @@
 			<div id="orderOutput"></div>
 		<!-- </fieldset> -->
 
-    	<script type="text/javascript" src="javascripts/sandwichMaker.js"></script>
     	<script type="text/javascript" src="javascripts/DOMHandler.js"></script>
+    	<script type="text/javascript" src="javascripts/sandwichMaker.js"></script>
     	<script type="text/javascript" src="javascripts/meat.js"></script>
     	<script type="text/javascript" src="javascripts/bread.js"></script>
+    	<script type="text/javascript" src="javascripts/cheese.js"></script>
+    	<script type="text/javascript" src="javascripts/veggies.js"></script>
+    	<script type="text/javascript" src="javascripts/condiments.js"></script>
     </body>
 </html>
+
+
+
