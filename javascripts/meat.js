@@ -15,17 +15,17 @@ var SandwichMaker = (function(maker) {
   		"none": 0.00
   };
 
-  // Adds the selected meat choice to the <workingSandwichOrder["meat"] array
+  // Adds the selected meat choice to the <workingSandwichOrder["Meat"] array
   // RETURNS modified <workingSandwichOrder> array
 	maker.addMeatChoice = function(thisTopping) {
     workingSandwichOrder["Meat"].push(selectedTopping);
     return workingSandwichOrder;
   };
 
-  // Removes the selected meat choice from the <workingSandwichOrder["meat"] array
+  // Removes the selected meat choice from the <workingSandwichOrder["mMat"] array
   // RETURNS modified <workingSandwichOrder> array
   maker.removeMeatChoice = function(thisTopping) {
-    workingSandwichOrder["Meat"].splice(workingSandwichOrder["meat"].indexOf(thisTopping), 1);
+    workingSandwichOrder["Meat"].splice(workingSandwichOrder["Meat"].indexOf(thisTopping), 1);
     return workingSandwichOrder;
   };
 
@@ -38,3 +38,9 @@ var SandwichMaker = (function(maker) {
   return maker;
 
 })(SandwichMaker || {});
+
+
+
+
+
+

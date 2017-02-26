@@ -11,17 +11,17 @@ var SandwichMaker = (function(maker) {
       "ranch": 0.40
   };
 
-  // Adds the selected condiments choice to the <workingSandwichOrder["condiments"] array
+  // Adds the selected condiments choice to the <workingSandwichOrder["Condiments"] array
   // RETURNS modified <workingSandwichOrder> array
 	maker.addCondimentsChoice = function(thisTopping) {
     workingSandwichOrder["Condiments"].push(selectedTopping);
     return workingSandwichOrder;
   };
 
-  // Removes the selected condiments choice from the <workingSandwichOrder["condiments"] array
+  // Removes the selected condiments choice from the <workingSandwichOrder["Condiments"] array
   // RETURNS modified <workingSandwichOrder> array
   maker.removeCondimentsChoice = function(thisTopping) {
-    workingSandwichOrder["Condiments"].splice(workingSandwichOrder["condiments"].indexOf(thisTopping), 1);
+    workingSandwichOrder["Condiments"].splice(workingSandwichOrder["Condiments"].indexOf(thisTopping), 1);
     return workingSandwichOrder;
   };
 
@@ -38,3 +38,7 @@ var SandwichMaker = (function(maker) {
   return maker;
 
 })(SandwichMaker || {});
+
+
+
+

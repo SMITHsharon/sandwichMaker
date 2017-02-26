@@ -15,13 +15,16 @@ var workingSandwichOrder = {
 // Variable holds the topping that the user selects
 var selectedTopping;
 
-// Get a reference to the <select> element that has all the meat options
+// vars hold a reference to the <select> element that has all the meat options
 var breadChooser = document.getElementById("breadChoices");
 var meatChooser = document.getElementById("meatChoices");
 var cheeseChooser = document.getElementById("cheeseChoices");
 var veggiesChooser = document.getElementById("veggieChoices");
 var condimentsChooser = document.getElementById("condimentsChoices");
+
+
 var doneButton = document.getElementById("buildSandwich");
+var calculatingOutput = document.getElementById("orderOutput");
 var finalOutputHTML = document.getElementById("orderOutput");
 
 
@@ -45,12 +48,10 @@ breadChooser.addEventListener("change", function(event) {
     // add the topping price to <finalSandwichPrice>
     SandwichMaker.addBreadChoice(selectedTopping);
     finalSandwichPrice += SandwichMaker.getBreadPrice(selectedTopping);
-
   } 
 
   // Output the price-in-process to the DOM
-  document.getElementById("orderOutput").innerHTML = "Calculating Price: $" + finalSandwichPrice.toFixed(2);
-  console.log("workingSandwichOrder :: ", workingSandwichOrder); 
+  calculatingOutput.innerHTML = "Calculating Price: $" + finalSandwichPrice.toFixed(2);
 });
 
 
@@ -65,7 +66,7 @@ meatChooser.addEventListener("change", function(event) {
   if (event.target.checked) {
 
     if (selectedTopping !== "none") {    
-      // add the selectedTopping to <workingSandwichOrder["meat"]> array
+      // add the selectedTopping to <workingSandwichOrder["Meat"]> array
       // add the topping price to <finalSandwichPrice>
       SandwichMaker.addMeatChoice(selectedTopping);
       finalSandwichPrice += SandwichMaker.getMeatPrice(selectedTopping);
@@ -76,37 +77,43 @@ meatChooser.addEventListener("change", function(event) {
       // subtract any meat topping prices that have been added to <finalSandwichPrice>
       var loopLength = workingSandwichOrder["Meat"].length;
       for (var i=0; i<loopLength; i++) {
-        finalSandwichPrice -= SandwichMaker.getMeatPrice(workingSandwichOrder["meat"][0]);  // item to be removed 
+        finalSandwichPrice -= SandwichMaker.getMeatPrice(workingSandwichOrder["Meat"][0]);  // item to be removed 
         SandwichMaker.removeMeatChoice(workingSandwichOrder["Meat"][0]);                    // will always be first item in array
 
         // clear the DOM check boxes to show only <No Meat> selected
-        var meatChoicesDisplay = document.getElementById("meatChoices");
-  console.log("meatChoicesDisplay :: ", meatChoicesDisplay);
-        var checkBoxesDisplay = "<h3>Meat Choices</h3>";
-        checkBoxesDisplay += "<ul>";
-        checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="turkey" />Turkey</li>';
-        checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="chicken" />Chicken</li>';
-        checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="ham" />Ham</li>';
-        checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="roast beef" />Roast Beef</li>';
-        checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="salami" />Salami</li>';
-        checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="tuna" />Tuna</li>';
-        checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="none" checked="checked" />No Meat</li>';
-        checkBoxesDisplay += '</ul>';
-        meatChoicesDisplay.innerHTML = checkBoxesDisplay;
+        clearCheckBoxes();
       }
     }
 
   } else {
-    // remove the selected item from <workingSandwichOrder["meat"]> array
+    // remove the selected item from <workingSandwichOrder["Meat"]> array
     // subtract the topping price from <finalSandwichPrice>
     SandwichMaker.removeMeatChoice(selectedTopping);
     finalSandwichPrice -= SandwichMaker.getMeatPrice(selectedTopping);
   }
 
   // Output the price-in-process to the DOM
-  document.getElementById("orderOutput").innerHTML = "Calculating Price: $" + finalSandwichPrice.toFixed(2);
-  console.log("workingSandwichOrder :: ", workingSandwichOrder); 
+  calculatingOutput.innerHTML = "Calculating Price: $" + finalSandwichPrice.toFixed(2);
 });
+
+
+function clearCheckBoxes() {
+  var meatChoicesDisplay = document.getElementById("meatChoices");
+  var checkBoxesDisplay = "<h3>Meat Choices</h3>";
+
+  checkBoxesDisplay += "<ul>";
+  checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="turkey" />Turkey</li>';
+  checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="chicken" />Chicken</li>';
+  checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="ham" />Ham</li>';
+  checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="roast beef" />Roast Beef</li>';
+  checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="salami" />Salami</li>';
+  checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="tuna" />Tuna</li>';
+  checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="none" checked="checked" />No Meat</li>';
+  checkBoxesDisplay += '</ul>';
+
+  meatChoicesDisplay.innerHTML = checkBoxesDisplay;
+}
+
 
 
 //********************************************************
@@ -119,21 +126,20 @@ cheeseChooser.addEventListener("change", function(event) {
 
   if (event.target.checked) {
 
-    // add the selectedTopping to <workingSandwichOrder["cheese"]> array
+    // add the selectedTopping to <workingSandwichOrder["Cheese"]> array
     // add the topping price to <finalSandwichPrice>
     SandwichMaker.addCheeseChoice(selectedTopping);
     finalSandwichPrice += SandwichMaker.getCheesePrice(selectedTopping);
 
   } else {
-    // remove the selected item from <workingSandwichOrder["cheese"]> array
+    // remove the selected item from <workingSandwichOrder["Cheese"]> array
     // subtract the topping price from <finalSandwichPrice>
     SandwichMaker.removeCheeseChoice(selectedTopping);
     finalSandwichPrice -= SandwichMaker.getCheesePrice(selectedTopping);
   }
 
   // Output the price-in-process to the DOM
-  document.getElementById("orderOutput").innerHTML = "Calculating Price: $" + finalSandwichPrice.toFixed(2);
-  console.log("workingSandwichOrder :: ", workingSandwichOrder); 
+  calculatingOutput.innerHTML = "Calculating Price: $" + finalSandwichPrice.toFixed(2);
 });
 
 
@@ -147,21 +153,20 @@ veggiesChooser.addEventListener("change", function(event) {
 
   if (event.target.checked) {
 
-    // add the selectedTopping to <workingSandwichOrder["veggies"]> array
+    // add the selectedTopping to <workingSandwichOrder["Veggies"]> array
     // add the topping price to <finalSandwichPrice>
     SandwichMaker.addVeggiesChoice(selectedTopping);
     finalSandwichPrice += SandwichMaker.getVeggiesPrice(selectedTopping);
 
   } else {
-    // remove the selected item from <workingSandwichOrder["veggies"]> array
+    // remove the selected item from <workingSandwichOrder["Veggies"]> array
     // subtract the topping price from <finalSandwichPrice>
     SandwichMaker.removeVeggiesChoice(selectedTopping);
     finalSandwichPrice -= SandwichMaker.getVeggiesPrice(selectedTopping);
   }
 
   // Output the price-in-process to the DOM
-  document.getElementById("orderOutput").innerHTML = "Calculating Price: $" + finalSandwichPrice.toFixed(2);
-  console.log("workingSandwichOrder :: ", workingSandwichOrder); 
+  calculatingOutput.innerHTML = "Calculating Price: $" + finalSandwichPrice.toFixed(2);
 });
 
 
@@ -176,30 +181,29 @@ condimentsChooser.addEventListener("change", function(event) {
 
   if (event.target.checked) {
 
-    // add the selectedTopping to <workingSandwichOrder["condiments"]> array
+    // add the selectedTopping to <workingSandwichOrder["Condiments"]> array
     // add the topping price to <finalSandwichPrice>
     SandwichMaker.addCondimentsChoice(selectedTopping);
     finalSandwichPrice += SandwichMaker.getCondimentsPrice(selectedTopping);
+console.log("added Condiments / workingSandwichOrder:: ", workingSandwichOrder)
 
   } else {
-    // remove the selected item from <workingSandwichOrder["condiments"]> array
+    // remove the selected item from <workingSandwichOrder["Condiments"]> array
     // subtract the topping price from <finalSandwichPrice>
     SandwichMaker.removeCondimentsChoice(selectedTopping);
     finalSandwichPrice -= SandwichMaker.getCondimentsPrice(selectedTopping);
   }
 
   // Output the price-in-process to the DOM
-  document.getElementById("orderOutput").innerHTML = "Calculating Price: $" + finalSandwichPrice.toFixed(2);
-  console.log("workingSandwichOrder :: ", workingSandwichOrder); 
+  calculatingOutput.innerHTML = "Calculating Price: $" + finalSandwichPrice.toFixed(2);
 });
 
 
 
 //********************************************************
-// Event Listener for condimentsChooser
+// Event Listener for Done button
 //********************************************************
 doneButton.addEventListener("click", function() {
-  console.log("listening to doneButton");
     outputFinalOrder();
 });
 
@@ -214,7 +218,7 @@ function outputFinalOrder() {
 
   var tempOutputStr;
 
-  var priceStr = "<h3>Total Price: " + finalSandwichPrice.toFixed(2) + "</h3>";
+  var priceStr = "<h3>Total Price: $" + finalSandwichPrice.toFixed(2) + "</h3>";
 
   tempOutputStr = "<h3>Sandwich Choices</h3>";
   for (var i in workingSandwichOrder) {

@@ -13,17 +13,17 @@ var SandwichMaker = (function(maker) {
       "olives": 0.40
   };
 
-  // Adds the selected veggie choice to the <workingSandwichOrder["veggies"] array
+  // Adds the selected veggie choice to the <workingSandwichOrder["Veggies"] array
   // RETURNS modified <workingSandwichOrder> array
 	maker.addVeggiesChoice = function(thisTopping) {
     workingSandwichOrder["Veggies"].push(selectedTopping);
     return workingSandwichOrder;
   };
 
-  // Removes the selected veggie choice from the <workingSandwichOrder["veggies"] array
+  // Removes the selected veggie choice from the <workingSandwichOrder["Veggies"] array
   // RETURNS modified <workingSandwichOrder> array
   maker.removeVeggiesChoice = function(thisTopping) {
-    workingSandwichOrder["Veggies"].splice(workingSandwichOrder["veggies"].indexOf(thisTopping), 1);
+    workingSandwichOrder["Veggies"].splice(workingSandwichOrder["Veggies"].indexOf(thisTopping), 1);
     return workingSandwichOrder;
   };
 
@@ -40,3 +40,6 @@ var SandwichMaker = (function(maker) {
   return maker;
 
 })(SandwichMaker || {});
+
+
+

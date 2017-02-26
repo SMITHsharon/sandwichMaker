@@ -9,17 +9,17 @@ var SandwichMaker = (function(maker) {
   		"american": 0.90
   };
 
-  // Adds the selected cheese choice to the <workingSandwichOrder["cheese"] array
+  // Adds the selected cheese choice to the <workingSandwichOrder["Cheese"] array
   // RETURNS modified <workingSandwichOrder> array
 	maker.addCheeseChoice = function(thisTopping) {
     workingSandwichOrder["Cheese"].push(selectedTopping);
     return workingSandwichOrder;
   };
 
-  // Removes the selected cheese choice from the <workingSandwichOrder["cheese"] array
+  // Removes the selected cheese choice from the <workingSandwichOrder["Cheese"] array
   // RETURNS modified <workingSandwichOrder> array
   maker.removeCheeseChoice = function(thisTopping) {
-    workingSandwichOrder["Cheese"].splice(workingSandwichOrder["cheese"].indexOf(thisTopping), 1);
+    workingSandwichOrder["Cheese"].splice(workingSandwichOrder["Cheese"].indexOf(thisTopping), 1);
     return workingSandwichOrder;
   };
 

@@ -11,7 +11,7 @@ var SandwichMaker = (function(maker) {
   		"wrap": 0.50
   };
 
-  // Adds the selected bread choice to the <workingSandwichOrder["bread"] array
+  // Adds the selected bread choice to the <workingSandwichOrder["Bread"] array
   // RETURNS modified <workingSandwichOrder> array
 	maker.addBreadChoice = function(thisTopping) {
     workingSandwichOrder.Bread = selectedTopping;
