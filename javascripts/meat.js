@@ -18,24 +18,20 @@ var SandwichMaker = (function(maker) {
   // Adds the selected meat choice to the <workingSandwichOrder["meat"] array
   // RETURNS modified <workingSandwichOrder> array
 	maker.addMeatChoice = function(thisTopping) {
-    workingSandwichOrder["meat"].push(selectedTopping);
+    workingSandwichOrder["Meat"].push(selectedTopping);
     return workingSandwichOrder;
   };
 
   // Removes the selected meat choice from the <workingSandwichOrder["meat"] array
   // RETURNS modified <workingSandwichOrder> array
   maker.removeMeatChoice = function(thisTopping) {
-    workingSandwichOrder["meat"].splice(workingSandwichOrder["meat"].indexOf(thisTopping), 1);
+    workingSandwichOrder["Meat"].splice(workingSandwichOrder["meat"].indexOf(thisTopping), 1);
     return workingSandwichOrder;
   };
 
   // RETURNS the price for the selected meat choice
   maker.getMeatPrice = function(thisTopping) {
-    for (var i in meatPrices) {
-      if (i === thisTopping) {
-      return meatPrices[i];
-      }
-    }
+    return meatPrices[thisTopping];
   }
 
   // RETURNS the new, augmented object with the new methods on it to SandwichMaker

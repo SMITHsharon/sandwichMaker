@@ -14,7 +14,7 @@ var SandwichMaker = (function(maker) {
   // Adds the selected bread choice to the <workingSandwichOrder["bread"] array
   // RETURNS modified <workingSandwichOrder> array
 	maker.addBreadChoice = function(thisTopping) {
-    workingSandwichOrder.bread = selectedTopping;
+    workingSandwichOrder.Bread = selectedTopping;
     return workingSandwichOrder;
   };
 

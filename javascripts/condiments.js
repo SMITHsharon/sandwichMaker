@@ -14,14 +14,14 @@ var SandwichMaker = (function(maker) {
   // Adds the selected condiments choice to the <workingSandwichOrder["condiments"] array
   // RETURNS modified <workingSandwichOrder> array
 	maker.addCondimentsChoice = function(thisTopping) {
-    workingSandwichOrder["condiments"].push(selectedTopping);
+    workingSandwichOrder["Condiments"].push(selectedTopping);
     return workingSandwichOrder;
   };
 
   // Removes the selected condiments choice from the <workingSandwichOrder["condiments"] array
   // RETURNS modified <workingSandwichOrder> array
   maker.removeCondimentsChoice = function(thisTopping) {
-    workingSandwichOrder["condiments"].splice(workingSandwichOrder["condiments"].indexOf(thisTopping), 1);
+    workingSandwichOrder["Condiments"].splice(workingSandwichOrder["condiments"].indexOf(thisTopping), 1);
     return workingSandwichOrder;
   };
 

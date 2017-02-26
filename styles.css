@@ -1,29 +1,55 @@
+
 body {
-	background-color: lightblue;
+	background-color: teal;
 }
 
 h1 {
-	text-align: center;
+  text-align: center;
+  font-size: 2em;
 }
 
+h3 {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+
+
+/***********************************/
+/* flex styling 
+/***********************************/
+#custChoices {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-around;
+}
+
+#wrapUp {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-left: 150px;
+  /*justify-content: space-around;*/
+}
+
+
+
+/***********************************/
+/* styling for menu boxes
+/***********************************/
 .menuBoxes {
 	border: 3px solid slategrey;
 	border-radius: 5%;
-	background-color: teal;
+	background-color: lightblue;
 	width: 15%;
-	margin: auto;
 	margin-bottom: 15px;
-
 }
 
 #orderOutput {
-  border: 3px solid slategrey;
-  border-radius: 5%;
-  background-color: teal;
-  width: 15%;
-  margin: auto;
-  margin-bottom: 15px;
-
+  height: 150px;
+  width: 300px;
+  margin: 10px 10px;
 }
 
 ul {
@@ -32,6 +58,12 @@ ul {
 	display: inline-block;
 	list-style-type: none;
 }
+
+
+
+/***********************************/
+/* styling for Done button
+/***********************************/
 
 #doneButton {
 	margin: auto auto;
