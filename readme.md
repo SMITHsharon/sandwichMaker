@@ -2,7 +2,7 @@
 
 ### Project Description 
 This assignment displays a minimally styled html sandwich order form that allows the user to select all the ingredients for a custom deli sandwich. 
-<!-- ![Sandwich Maker Screengrab](https://....png) -->
+<!-- ![Sandwich Maker Screengrab](https://raw.githubusercontent.com/SMITHsharon/sandwichMaker/scripts/screen/sandwich%20maker%20screen%20shot.png) -->
 
 
 ### Project Specs
