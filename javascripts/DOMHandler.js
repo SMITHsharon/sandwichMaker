@@ -21,6 +21,7 @@ var meatChooser = document.getElementById("meatChoices");
 var cheeseChooser = document.getElementById("cheeseChoices");
 var veggiesChooser = document.getElementById("veggieChoices");
 var condimentsChooser = document.getElementById("condimentsChoices");
+var noMeatFlag = document.getElementById("noMeat");
 
 
 var doneButton = document.getElementById("buildSandwich");
@@ -68,10 +69,15 @@ meatChooser.addEventListener("change", function(event) {
     if (selectedTopping !== "none") {    
       // add the selectedTopping to <workingSandwichOrder["Meat"]> array
       // add the topping price to <finalSandwichPrice>
+      noMeatFlag.checked = false; // uncheck "no meat"
       SandwichMaker.addMeatChoice(selectedTopping);
       finalSandwichPrice += SandwichMaker.getMeatPrice(selectedTopping);
 
     } else {
+      // clear the DOM check boxes to show only <No Meat> selected
+
+      clearCheckBoxes();
+
       // selectedTopping is <No Meat>
       // remove any meat toppings that have been added to <workingSandwichOrder> array
       // subtract any meat topping prices that have been added to <finalSandwichPrice>
@@ -79,9 +85,7 @@ meatChooser.addEventListener("change", function(event) {
       for (var i=0; i<loopLength; i++) {
         finalSandwichPrice -= SandwichMaker.getMeatPrice(workingSandwichOrder["Meat"][0]);  // item to be removed 
         SandwichMaker.removeMeatChoice(workingSandwichOrder["Meat"][0]);                    // will always be first item in array
-
-        // clear the DOM check boxes to show only <No Meat> selected
-        clearCheckBoxes();
+        SandwichMaker.addMeatChoice(selectedTopping);
       }
     }
 
@@ -98,20 +102,12 @@ meatChooser.addEventListener("change", function(event) {
 
 
 function clearCheckBoxes() {
-  var meatChoicesDisplay = document.getElementById("meatChoices");
-  var checkBoxesDisplay = "<h3>Meat Choices</h3>";
-
-  checkBoxesDisplay += "<ul>";
-  checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="turkey" />Turkey</li>';
-  checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="chicken" />Chicken</li>';
-  checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="ham" />Ham</li>';
-  checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="roast beef" />Roast Beef</li>';
-  checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="salami" />Salami</li>';
-  checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="tuna" />Tuna</li>';
-  checkBoxesDisplay += '<li><input type="checkbox" name="chk_meat" value="none" checked="checked" />No Meat</li>';
-  checkBoxesDisplay += '</ul>';
-
-  meatChoicesDisplay.innerHTML = checkBoxesDisplay;
+  
+      noMeatFlag.checked = true;
+      // set all other <meat> check boxes to <false>
+      for (var i=3; i<meatChooser.childNodes[3].childNodes.length; i+=2) {
+          meatChooser.childNodes[3].childNodes[i].childNodes[0].checked = false;
+      }
 }
 
 
@@ -185,7 +181,6 @@ condimentsChooser.addEventListener("change", function(event) {
     // add the topping price to <finalSandwichPrice>
     SandwichMaker.addCondimentsChoice(selectedTopping);
     finalSandwichPrice += SandwichMaker.getCondimentsPrice(selectedTopping);
-console.log("added Condiments / workingSandwichOrder:: ", workingSandwichOrder)
 
   } else {
     // remove the selected item from <workingSandwichOrder["Condiments"]> array
